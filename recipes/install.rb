@@ -33,14 +33,5 @@ end
   to "#{node.elasticsearch[:home_dir]}-#{node.elasticsearch[:version]}"
 end
 
-# Install Kuromoji plugin
-script "install_plugins" do
-  interpreter "bash"
-  user "root"
-  cwd "#{node.elasticsearch[:home_dir]}"
-  code <<-EOH
-    bin/plugin -install elasticsearch/elasticsearch-analysis-kuromoji/1.1.0
-  EOH
-end
 
 

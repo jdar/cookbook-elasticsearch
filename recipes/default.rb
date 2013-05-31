@@ -37,10 +37,3 @@ service "elasticsearch" do
   supports :status => true, :restart => true
   action [ :start ]
 end
-
-# Monitoring by Monit
-template "elasticsearch.monitrc" do
-  path   "/etc/monit.d/elasticsearch.monitrc"
-  source "elasticsearch.monitrc.erb"
-  owner 'root' and mode 0755
-end
