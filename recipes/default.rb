@@ -15,7 +15,7 @@ template "elasticsearch.yml" do
   source "elasticsearch.yml.erb"
   owner node.elasticsearch[:user] and group node.elasticsearch[:user] and mode 0755
 
-  notifies :restart, 'service[elasticsearch]'
+  notifies :restart, resources(:service => 'elasticsearch')
 end
 
 template "elasticsearch-env.sh" do
