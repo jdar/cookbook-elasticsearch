@@ -9,6 +9,12 @@
   end
 end
 
+# Auto start
+service "elasticsearch" do
+  supports :status => true, :restart => true
+  action [ :start ]
+end
+
 # Configration
 template "elasticsearch.yml" do
   path   "#{node.elasticsearch[:path][:conf]}/elasticsearch.yml"
@@ -30,10 +36,4 @@ template "elasticsearch.init" do
   path   "/etc/init.d/elasticsearch"
   source "elasticsearch.init.erb"
   owner 'root' and mode 0755
-end
-
-# Auto start
-service "elasticsearch" do
-  supports :status => true, :restart => true
-  action [ :start ]
 end
