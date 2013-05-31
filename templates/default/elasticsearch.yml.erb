@@ -371,3 +371,13 @@ path.plugins: <%= node.elasticsearch[:path][:plugins] %>
 #monitor.jvm.gc.ConcurrentMarkSweep.warn: 10s
 #monitor.jvm.gc.ConcurrentMarkSweep.info: 5s
 #monitor.jvm.gc.ConcurrentMarkSweep.debug: 2s
+
+<% if node.elasticsearch[:use_aws] %>
+################################## AWS ################################
+
+cloud.aws.access_key: <%= node.elasticsearch[:aws][:access_key] %>
+cloud.aws.secret_key: <%= node.elasticsearch[:aws][:secret_key] %>
+discovery.type: ec2
+gateway.type: s3
+gateway.s3.bucket: <%= node.elasticsearch[:aws][:s3][:bucket] %>
+<% end %>
