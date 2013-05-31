@@ -6,3 +6,7 @@ end
 package 'tree' do
   action :install
 end
+
+package 'openjdk-7-jdk' do
+  action :install
+end
