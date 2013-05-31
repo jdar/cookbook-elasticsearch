@@ -1,6 +1,7 @@
 #-*- encoding : utf-8 -*-
 # === VERSION AND LOCATION
 default.elasticsearch[:version]       = "0.90.1"
+default.elasticsearch[:cluster_name]  = "elasticsearch"
 default.elasticsearch[:host]          = "http://download.elasticsearch.org"
 default.elasticsearch[:repository]    = "elasticsearch/elasticsearch"
 default.elasticsearch[:filename]      = "elasticsearch-#{node.elasticsearch[:version]}.tar.gz"
