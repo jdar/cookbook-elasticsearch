@@ -56,19 +56,11 @@ end
   end
 end
 
-# Auto start
-service "elasticsearch" do
-  supports :status => true, :restart => true
-  action [ :start ]
-end
-
 # Configration
 template "elasticsearch.yml" do
   path   "#{node.elasticsearch[:path][:conf]}/elasticsearch.yml"
   source "elasticsearch.yml.erb"
   owner node.elasticsearch[:user] and group node.elasticsearch[:user] and mode 0755
-
-  notifies :restart, resources(:service => 'elasticsearch')
 end
 
 # Install elasticsearch-cloud-aws plugin
@@ -79,6 +71,10 @@ script "install_plugins" do
   code <<-EOH
     bin/plugin -install elasticsearch/elasticsearch-cloud-aws/1.12.0
   EOH
-  
-  notifies :restart, resources(:service => 'elasticsearch')
+end
+
+# Auto start
+service "elasticsearch" do
+  supports :status => true, :restart => true
+  action [ :start ]
 end
