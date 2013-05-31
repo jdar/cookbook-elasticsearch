@@ -33,5 +33,9 @@ end
   to "#{node.elasticsearch[:home_dir]}-#{node.elasticsearch[:version]}"
 end
 
-
-
+# Init File
+template "elasticsearch.init" do
+  path   "/etc/init.d/elasticsearch"
+  source "elasticsearch.init.erb"
+  owner 'root' and mode 0755
+end

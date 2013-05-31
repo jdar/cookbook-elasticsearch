@@ -29,11 +29,3 @@ template "elasticsearch-env.sh" do
   source "elasticsearch-env.sh.erb"
   owner node.elasticsearch[:user] and group node.elasticsearch[:user] and mode 0755
 end
-
-
-# Init File
-template "elasticsearch.init" do
-  path   "/etc/init.d/elasticsearch"
-  source "elasticsearch.init.erb"
-  owner 'root' and mode 0755
-end
