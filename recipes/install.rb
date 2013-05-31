@@ -33,6 +33,13 @@ end
   to "#{node.elasticsearch[:home_dir]}-#{node.elasticsearch[:version]}"
 end
 
+# Init Configuration
+template "elasticsearch-env.sh" do
+  path   "#{node.elasticsearch[:path][:conf]}/elasticsearch-env.sh"
+  source "elasticsearch-env.sh.erb"
+  owner node.elasticsearch[:user] and group node.elasticsearch[:user] and mode 0755
+end
+
 # Init File
 template "elasticsearch.init" do
   path   "/etc/init.d/elasticsearch"
