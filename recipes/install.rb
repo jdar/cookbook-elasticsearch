@@ -2,7 +2,7 @@
 elasticsearch = "elasticsearch-#{node.elasticsearch[:version]}"
 include_recipe "elasticsearch::packages"
 
-# Create user and group
+# Create user and group.
 group node.elasticsearch[:user] do
   action :create
 end
