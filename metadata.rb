@@ -7,3 +7,4 @@ long_description IO.read(File.join(File.dirname(__FILE__), 'README.rdoc'))
 version          "0.0.1"
 
 depends "java"
+#dependencies specified here but you still need to include recipe elsewhere
